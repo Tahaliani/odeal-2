@@ -1,0 +1,46 @@
+<div class="grid">
+    <app-header></app-header>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col col9">
+                    <h1>Orders </h1>
+                </div>
+            </div>
+            <hr>
+            <div class="row orders">
+
+                <div class="col col3 order" *ngFor="let order of orders$ | async">
+                    <div class="row">
+                        <div class="col">
+                            <h3>{{order["customer_name"]}}</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <span>Payment #{{order["payment_id"]}}</span>
+                                </div>
+                                <div class="col">
+                                    <span>{{order["payment_status"]}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span>{{order["description"]}}</span>
+                    <hr>
+                    
+                    <span *ngFor="let product of products$ | async">
+                        <div *ngIf="product['\$id'] == order['product_id']">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>{{product["name"]}}</span>
+                        </div>
+                    </span>
+                    <span *ngFor="let shop of shops$ | async">
+                        <div *ngIf="shop['\$id'] == order['store_id']">
+                            <span class="material-symbols-rounded">store</span>
+                            <span>{{shop["name"]}}</span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

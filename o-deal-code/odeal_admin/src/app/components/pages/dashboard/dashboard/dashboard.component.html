@@ -1,0 +1,67 @@
+<div class="grid">
+    <app-header></app-header>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col">
+                    <h1>Welcome </h1>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col col6">
+                    <div class="card center">
+                        <span class="title">
+                            Total Users
+                        </span>
+                        <span class="count">{{(users$| async)?.length}}</span>
+                    </div>   
+                </div>
+                <div class="col col6">
+                    <div class="card center">
+                        <span class="title">
+                            Total Stores
+                        </span>
+                        <span class="count">{{(shops$| async)?.length}}</span>
+                    </div>   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col6">
+                    <div class="card center">
+                        <span class="title">
+                            Total Products
+                        </span>
+                        <span class="count">{{(products$| async)?.length}}</span>
+                    </div>   
+                </div>
+                <div class="col col6">
+                    <div class="card center">
+                        <span class="title">
+                            Total Offers
+                        </span>
+                        <span class="count">{{(offers$| async)?.length}}</span>
+                    </div>   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col6">
+                    <div class="card center">
+                        <span class="title">
+                            Total Orders
+                        </span>
+                        <span class="count">{{(orders$| async)?.length}}</span>
+                    </div>   
+                </div>
+                <div class="col col6">
+                    <div class="card center">
+                        <span class="title">
+                            Total Reviews
+                        </span>
+                        <span class="count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="grid">
+    <app-header></app-header>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col col9">
+                    <h1>Products </h1>
+                </div>
+                <div class="col col3">
+                    <button  (click)="addOfferPop()"><mat-icon>add</mat-icon> Add new</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row products">
+
+                <div class="col col3 product" *ngFor="let product of products$ | async">
+                    <div class="row">
+                        <div class="col col3">
+                            <img src="{{product['image']}}" class="image" alt="">
+                        </div>
+                        <div class="col col9">
+                            <h3>{{product["name"]}}</h3>
+                            <div class="row">
+                                <div class="col col6">
+                                    <span>{{product["offerPrice"]}}</span>
+                                </div>
+                                <div class="col col6">
+                                    <del>{{product["price"]}}</del>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span>{{product["description"]}}</span>
+                    <hr>
+                    <span *ngFor="let shop of shops$ | async">
+                        <div *ngIf="shop['\$id'] == product['storeId']">
+                            <span class="material-symbols-rounded">store</span>
+                            <span>{{shop["name"]}}</span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="addOffer" [ngClass]="{'active': offerPop === true}" (click)="addOfferPop()">
+    <form [formGroup]="addOfferForm" (ngSubmit)="addOffer()" (click)="$event.stopPropagation()">
+      <h3>Add New Product</h3>
+
+        <div class="input">
+        <select formControlName="store" placeholder="Select Store" >
+          <option selected="selected" value="">Select Store</option>
+          <option value="{{res['$id']}}" *ngFor="let res of shops$ | async" >{{res['name']}}</option>
+        </select>
+      </div>
+  
+      <div class="input">
+        <input formControlName="name" type="text" class="" placeholder="Name" />
+      </div>
+      <div class="input">
+        <textarea formControlName="description" rows="3" class="" placeholder="Description" ></textarea>
+      </div>
+      <div class="input">
+        Image
+        <br>
+        <br>
+        <input formControlName="image" type="file" class="" placeholder="Image" />
+      </div>
+      <div class="input">
+        <input formControlName="price" type="number" class="" placeholder="Price" />
+      </div>
+      <div class="input">
+        <input formControlName="offerPrice" type="number" class="" placeholder="Offer Price" />
+      </div>
+      
+      <button [disabled]="addOfferForm.invalid" type="submit">Create</button>
+    </form>
+  </div>

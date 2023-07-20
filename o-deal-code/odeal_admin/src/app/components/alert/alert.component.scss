@@ -1,0 +1,32 @@
+.alertcontainer{
+    
+    position: fixed;
+    bottom:30px;
+    width: 100%;
+    display: flex;
+    .alert{
+        margin: auto;
+        background:var(--bg-dark);
+        padding:1rem;
+        border-radius: 0.25rem;
+        color: #fff;
+    }
+    .alert.red{
+        background:#f00;
+    }
+    .alert.green{
+        background:#080;
+    }
+    .close{
+        cursor: pointer;
+        background-color: #fff;
+        color: #ff0000;
+        height: 17px;
+        width: 17px;
+        display: inline-block;
+        border-radius: 3rem;
+        text-align: center;
+        font-weight: 700;
+    }
+
+}

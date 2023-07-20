@@ -1,0 +1,53 @@
+{
+    "projectId": "63be9eb7dd5fe7dbc4f1",
+    "projectName": "O'deal",
+    "functions": [
+        {
+            "$id": "63ce35181fd0283acc5c",
+            "name": "signup",
+            "runtime": "node-16.0",
+            "path": "functions/signup",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [
+                "any"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        },
+        {
+            "$id": "63dcc188541ad0193366",
+            "name": "getOffers",
+            "runtime": "node-16.0",
+            "path": "functions/getOffers",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        },
+        {
+            "$id": "64802e4a5415289640af",
+            "name": "getUsers",
+            "runtime": "node-16.0",
+            "path": "functions/getUsers",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        }
+    ]
+}

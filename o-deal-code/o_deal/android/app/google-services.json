@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "664037960942",
+    "project_id": "odeal-914ac",
+    "storage_bucket": "odeal-914ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664037960942:android:741d5c5f7c12ef322457ff",
+        "android_client_info": {
+          "package_name": "shop.odeal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664037960942-698q6u4jjhqa0k6birrnonctp1g4cp2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQnobUxWnTG0NNvPPiP9gNJJL-yo1-J6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664037960942-698q6u4jjhqa0k6birrnonctp1g4cp2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

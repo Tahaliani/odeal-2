@@ -1,0 +1,62 @@
+<div class="grid">
+    <app-header></app-header>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col col9">
+                    <h1>Users </h1>
+                </div>
+                <div class="col col3">
+                    <button (click)="addOfferPop()"><mat-icon>add</mat-icon> Add new</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row user" *ngFor="let user of users$ | async">
+                <div class="col col3">
+                    <h3>{{user.name}}</h3>
+                    <span *ngIf="user.prefs['type']">({{user.prefs["type"]}})</span>
+                </div>
+                <div class="col col3">
+                    {{user.email}}
+                </div>
+                <div class="col col2">
+                    {{user.phone}}
+                </div>
+                <div class="col col2">
+                    <span *ngIf="user.status">Active</span> 
+                    <span *ngIf="!user.status">Inactive</span>
+                </div>
+                <div class="col col2">
+                    <span>Edit</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="addOffer" [ngClass]="{'active': offerPop === true}" (click)="addOfferPop()">
+    <form [formGroup]="addOfferForm" (ngSubmit)="addOffer()" (click)="$event.stopPropagation()">
+      <h3>Add New User</h3>
+      <div class="input">
+        <input formControlName="name" type="text" class="" placeholder="Name" />
+      </div>
+      <div class="input">
+        <input formControlName="email" type="text" class="" placeholder="Email" />
+      </div>
+      <div class="input">
+        <input formControlName="phone" type="text" class="" placeholder="Phone" />
+      </div>
+      <div class="input">
+        <input formControlName="password" type="text" class="" placeholder="Password" />
+      </div>
+      <div class="input">
+        <select formControlName="role" placeholder="Select Role" >
+            <option selected="selected" value="">Select Role</option>
+            <option value="user">User</option>
+            <option value="vendor">Vendor</option>
+            <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button [disabled]="addOfferForm.invalid" type="submit">Create</button>
+    </form>
+  </div>
+  

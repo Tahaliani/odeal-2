@@ -1,0 +1,6 @@
+<div class="alertcontainer" (click)="update()">
+    <div [ngClass]="['alert', alert?.color]">
+      <span class="inline-block align-middle font-semibold mr-8"> {{alert?.message}} </span>
+        <span class="close" (click)="$event.stopPropagation();dismissAlert();">×</span>
+    </div>
+  </div>

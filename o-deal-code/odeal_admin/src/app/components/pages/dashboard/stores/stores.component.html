@@ -1,0 +1,71 @@
+<div class="grid">
+    <app-header></app-header>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col col9">
+                    <h1>Stores </h1>
+                </div>
+                <div class="col col3">
+                    <button  (click)="addOfferPop()"><mat-icon>add</mat-icon> Add new</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col col3 shop"  *ngFor="let shop of shops$ | async">
+                    <img src="{{shop['image']}}" class="image" alt="">
+                    <img src="{{shop['decoration_image']}}" class="decoration_image" alt="">
+                    <h3>{{shop["name"]}}</h3>
+                    <span>{{shop["category"]}}</span>
+                    <hr>
+                    <div class="row">
+                        <div class="col col3 stats">
+                            Products
+                            <span>{{shop["total_products"]}}</span>
+                        </div>
+                        <div class="col col3 stats">
+                            Customers
+                            <span>{{shop["total_customer"]}}</span>
+                        </div>
+                        <div class="col col3 stats">
+                            Orders
+                            <span>{{shop["total_orders"]}}</span>
+                        </div>
+                    </div>
+            </div>
+            </div>
+         
+        </div>
+    </div>
+</div>
+<div class="addOffer" [ngClass]="{'active': offerPop === true}" (click)="addOfferPop()">
+    <form [formGroup]="addOfferForm" (ngSubmit)="addOffer()" (click)="$event.stopPropagation()">
+      <h3>Add New Store</h3>
+      <div class="input">
+        <input formControlName="name" type="text" class="" placeholder="Name" />
+      </div>
+      <div class="input">
+        <textarea formControlName="address" rows="3" class="" placeholder="Address" ></textarea>
+      </div>
+      <div class="input">
+        <input formControlName="contact" type="text" class="" placeholder="Contact" />
+      </div>
+      <div class="input">
+        <input formControlName="category" type="text" class="" placeholder="Category" />
+      </div>
+      <div class="input">
+        Image
+        <br>
+        <br>
+        <input formControlName="image" type="file" class="" placeholder="Image" />
+      </div>
+      <div class="input">
+        Decoration Image
+        <br>
+        <br>
+        <input formControlName="decoration_image" type="file" class="" placeholder="Image" />
+      </div>
+      <button [disabled]="addOfferForm.invalid" type="submit">Create</button>
+    </form>
+  </div>
+  

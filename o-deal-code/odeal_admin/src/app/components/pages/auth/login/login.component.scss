@@ -1,0 +1,89 @@
+$small: 900px;
+
+.grid{
+    margin-top: 0px;
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    background: var(--secondary-hover);
+    box-shadow: 0px 8px 40px -12px var(--secondary-dark);
+    
+    .section{
+        margin: auto;
+        max-width: 1100px;
+        height: 100%;
+        width: calc(100% - 2rem);
+        display: flex;
+        
+        .login-panel{
+            border-radius: 1rem;
+            max-height: 300px;
+            display: flex;
+            width: calc(90% - 4rem);
+            height: 80%;
+            max-width: 400px;
+            margin: auto;
+            padding: 2rem;
+            background: var(--primary);
+            .panel-container{
+                width: 100%;
+                margin:auto;
+
+                .logo {
+                    display: flex;
+                    // width: 100px;
+                    // float: left;
+                    color: #fff;
+                    margin-bottom: 1rem;
+                    img{
+                        height: 2rem;
+                        width: 2rem;
+                    }
+                    span{
+                        margin: 0;
+                        padding: 0 1rem;
+                        font-size: 2rem;
+                        font-weight: 700;
+                    }
+                }
+
+                h3{
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                }
+                .input{
+                    display: block;
+                    margin-bottom:1rem;
+                    padding:10px;
+                    background: #fff;
+                    border-radius: 0.25rem;
+    
+                    input{
+                        width: 100%;
+                        background: transparent;
+                        border: none;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                }
+                .ng-invalid{
+                    button{
+                        cursor: not-allowed;
+                        background: var(--secondary-hover);
+                        color: var(--primary);
+                    }
+                }
+                
+                span{
+                    display: block;
+                    cursor: pointer;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}

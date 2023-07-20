@@ -1,0 +1,151 @@
+<div class="grid">
+    <app-header></app-header>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col col9">
+                    <h1>Offers </h1>
+                </div>
+                <div class="col col3">
+                    <button (click)="addOfferPop()"><mat-icon>add</mat-icon> Add new</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row offers">
+
+                <div class="col col3 offer" *ngFor="let offer of offers$ | async">
+                    <div class="row">
+                        <div class="col">
+                            <h3>{{offer["name"]}}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col col6">
+                                    <span>{{offer["discount"]}}0% off</span>
+                                </div>
+                                <div class="col col6">
+                                    <span *ngIf="offer['discount_type'] == '1'">On this purchase</span>
+                                    <span *ngIf="offer['discount_type'] == '2'">On next purchase</span>
+                                    <span *ngIf="offer['discount_type'] == '3'">Buy 1 Get 1 Free</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col col6" *ngIf="offer['start_time']">
+                            <span>{{offer["start_time"]}}:00 {{offer["start_date"]}}</span>
+                        </div>
+                        <div class="col col6" *ngIf="offer['end_time']">
+                            <span>{{offer["end_time"]}}:00 {{offer["end_date"]}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span>{{offer["other_offer"]}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span *ngIf="offer['weekdays'] == '1'">Sunday |  Monday  |  Wednesday</span>
+                            <span *ngIf="offer['weekdays'] == '2'">Sunday |  Monday  |  Wednesday</span>
+                            <span *ngIf="offer['weekdays'] == '3'">Sunday |  Monday  |  Wednesday</span>
+                            <span *ngIf="offer['weekdays'] == '4'">Sunday |  Monday  |  Wednesday</span>
+                        </div>
+                    </div>  
+                    <span>{{offer["description"]}}</span>
+                    <hr>
+                    <span *ngFor="let product of products$ | async">
+                        <div *ngIf="product['\$id'] == offer['product_id']">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>{{product["name"]}}</span>
+                        </div>
+                    </span>
+                    <span *ngFor="let shop of shops$ | async">
+                        <div *ngIf="shop['\$id'] == offer['store_id']">
+                            <span class="material-symbols-rounded">store</span>
+                            <span>{{shop["name"]}}</span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="addOffer" [ngClass]="{'active': offerPop === true}" (click)="addOfferPop()">
+    <form [formGroup]="addOfferForm" (ngSubmit)="addOffer()" (click)="$event.stopPropagation()">
+      <h3>Add New Offer</h3>
+      
+      <div class="input">
+        <select formControlName="store" placeholder="Select Store" >
+          <option selected="selected" value="">Select Store</option>
+          <option value="{{res['$id']}}" *ngFor="let res of shops$ | async" >{{res['name']}}</option>
+        </select>
+      </div>
+  
+      <div class="input">
+        <input formControlName="name" type="text" class="" placeholder="Name" />
+      </div>
+      <div class="input">
+        <textarea formControlName="description" rows="3" class="" placeholder="Offer Description" ></textarea>
+      </div>
+      
+      <div class="input">
+        <input formControlName="discount" type="number" class="" placeholder="Discount" />
+      </div>
+      
+      <div class="input">
+        <select formControlName="discount_type" placeholder="Discount Type" >
+          <option selected="selected" value="">Discount Type</option>
+          <option value="1">On this purchase</option>
+          <option value="2">On next purchase</option>
+          <option value="3">Buy 1 Get 1 Free</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <input formControlName="other_offer" type="text" class="" placeholder="Other offer" />
+      </div>
+      
+      <div class="input">
+        Start 
+        <br><br>
+        <div class="row">
+            <div class="col col6">
+                <input formControlName="start_time" type="time" class="" placeholder="Start time" />
+            </div>
+            <div class="col col6">
+                <input formControlName="start_date" type="date" class="" placeholder="Start date" />
+            </div>
+        </div>
+      </div>
+
+      <div class="input">
+        End 
+        <br><br>
+        <div class="row">
+            <div class="col col6">
+                <input formControlName="end_time" type="time" class="" placeholder="End time" />
+            </div>
+            <div class="col col6">
+                <input formControlName="end_date" type="date" class="" placeholder="End date" />
+            </div>
+        </div>
+      </div>
+
+      
+      <div class="input">
+        <select formControlName="weekdays" placeholder="Weekdays" >
+          <option selected="selected" value="">Select Weekdays</option>
+          <option value="1">Sunday |  Monday  |  Wednesday</option>
+          <option value="2">Sunday |  Monday  |  Wednesday</option>
+          <option value="3">Sunday |  Monday  |  Wednesday</option>
+          <option value="4">Sunday |  Monday  |  Wednesday</option>
+        </select>
+      </div>
+      <button [disabled]="addOfferForm.invalid" type="submit">Create</button>
+    </form>
+  </div>
+  
